@@ -61,6 +61,16 @@ if(isset($_GET['recoveredItems'])){
     echo count($myrow);
 }
 
+if(isset($_GET['allRecoveredItems'])){
+    $myrow = $crud->fetch_data("SELECT * FROM recovered_items");
+    echo json_encode($myrow);
+}
+
+if(isset($_GET['allLostItems'])){
+    $myrow = $crud->fetch_data("SELECT * FROM lost_items");
+    echo json_encode($myrow);
+}
+
 
 
 
