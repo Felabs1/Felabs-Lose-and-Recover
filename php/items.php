@@ -25,4 +25,43 @@ if(isset($_POST['lostItemData'])){
     }
 }
 
+if(isset($_GET['imageUpload'])){
+    $filename = $_FILES['file']['name'];
+    $location = "../images/uploads/".$filename;
+    if ( move_uploaded_file($_FILES['file']['tmp_name'], $location) ) { 
+    echo $location; 
+    } else { 
+        echo "";
+    }
+}
+
+if(isset($_POST['recoveredItemData'])){
+    $obj = json_decode($_POST['recoveredItemData']);
+    $insert = $crud->insert_data("recovered_items", ["item_name" => $obj->recoveredItem, "recoverer_name" => $obj->recovererName, "item_state" => $obj->stateOfItem, "image" => $obj->data, "recoverer_id_no"=> $obj->recovererIdNo, "location_recovered" => $obj->location]);
+    if($insert){
+        echo "success";
+    }else{
+        echo $crud->conn->error;
+    }
+
+}
+
+if(isset($_GET['totalUsers'])){
+    $myrow = $crud->fetch_data("SELECT * FROM students");
+    echo count($myrow);
+}
+
+if(isset($_GET['lostItems'])){
+    $myrow = $crud->fetch_data("SELECT * FROM lost_items");
+    echo count($myrow);
+}
+
+if(isset($_GET['recoveredItems'])){
+    $myrow = $crud->fetch_data("SELECT * FROM recovered_items");
+    echo count($myrow);
+}
+
+
+
+
 ?>

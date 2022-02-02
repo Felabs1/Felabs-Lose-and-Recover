@@ -5,19 +5,23 @@
   </head>
   <body>
     <!-- HTML5 Input Form Elements -->
-    <input id="fileupload" type="file" name="fileupload" />
+    <input id="fileupload" type="file" name="fileopload" />
     <button id="upload-button" onclick="uploadFile()">Upload</button>
 
     <!-- Ajax JavaScript File Upload Logic -->
     <script>
       async function uploadFile() {
         let formData = new FormData();
+        // let obj = { name: "Fello" };
         formData.append("file", fileupload.files[0]);
-        await fetch("./upload.php", {
+        const response = await fetch("./upload.php", {
           method: "POST",
           body: formData,
+          // headers: { "Content-Type": "application/json" },
         });
-        alert("The file has been uploaded successfully.");
+
+        const data = await response.text();
+        console.log(data);
       }
     </script>
   </body>

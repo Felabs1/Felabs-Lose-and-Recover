@@ -132,12 +132,20 @@
           <div class="w3-row-padding w3-stretch">
             <div class="w3-col l6">
               <label for="">Item Name</label>
-              <input type="text" class="w3-input w3-border w3-round" />
+              <input
+                type="text"
+                id="recItemName"
+                class="w3-input w3-border w3-round"
+              />
             </div>
 
             <div class="w3-col l6">
               <label for="">Name Of Recoverer</label>
-              <input type="text" class="w3-input w3-border w3-round" />
+              <input
+                type="text"
+                id="recovererName"
+                class="w3-input w3-border w3-round"
+              />
             </div>
           </div>
           <br />
@@ -146,7 +154,7 @@
               <label>State Of Item</label>
               <!-- <input type="text" class="w3-input w3-border w3-round" />
                -->
-              <select id="" class="w3-select w3-border w3-round">
+              <select id="recItemState" class="w3-select w3-border w3-round">
                 <option value="good">Good</option>
                 <option value="fair">Fair</option>
                 <option value="damaged">damaged</option>
@@ -154,28 +162,38 @@
             </div>
             <div class="w3-col l6">
               <label>Image</label
-              ><input type="file" class="w3-input w3-border w3-round" />
+              ><input
+                id="fileUpload"
+                type="file"
+                class="w3-input w3-border w3-round"
+              />
             </div>
           </div>
           <br />
           <div class="w3-row-padding w3-stretch">
             <div class="w3-col l6">
               <label for="">Recoverer Id No</label>
-              <input class="w3-input w3-border w3-round" />
+              <input id="recIdNo" class="w3-input w3-border w3-round" />
             </div>
             <div class="w3-col l6">
               <label>Location Recovered</label
-              ><input type="text" class="w3-input w3-border w3-round" />
+              ><input
+                id="recLocation"
+                type="text"
+                class="w3-input w3-border w3-round"
+              />
             </div>
           </div>
           <button
+            type="button"
+            onclick="addFoundItem()"
             class="w3-button w3-round w3-block"
             style="
               background-image: linear-gradient(90deg, #4192f3, #5232f3);
               color: white;
             "
           >
-            Send Message
+            Add Found Item
           </button>
           <br />
         </form>

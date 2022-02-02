@@ -129,3 +129,63 @@ const reportLost = () => {
   request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
   request.send("lostItemData=" + dbParam);
 };
+
+const addFoundItem = () => {
+  let recoveredItem = $("#recItemName").val();
+  let recovererName = $("#recovererName").val();
+  let stateOfItem = $("#recItemState").val();
+  let recovererIdNo = $("#recIdNo").val();
+  let location = $("#recLocation").val();
+
+  if (
+    recoveredItem === "" ||
+    recovererName === "" ||
+    stateOfItem === "" ||
+    recovererIdNo === "" ||
+    location === ""
+  ) {
+    alert("please fill in all fields");
+    return;
+  }
+
+  const uploadFile = async () => {
+    let formData = new FormData();
+    formData.append("file", fileUpload.files[0]);
+    const response = await fetch("./php/items.php?imageUpload=true", {
+      method: "POST",
+      body: formData,
+    });
+    const data = await response.text();
+    // console.log(data);
+
+    let obj = {
+      recoveredItem,
+      recovererName,
+      stateOfItem,
+      recovererIdNo,
+      location,
+      data,
+    };
+
+    let dbParam = JSON.stringify(obj);
+    let request = new XMLHttpRequest();
+    request.open("POST", "./php/items.php", true);
+
+    request.onreadystatechange = function () {
+      if (this.readyState == 4 && this.status == 200) {
+        result = this.responseText;
+        console.log(result);
+      }
+    };
+    request.setRequestHeader(
+      "Content-type",
+      "application/x-www-form-urlencoded"
+    );
+    request.send("recoveredItemData=" + dbParam);
+
+    console.log(obj);
+  };
+  uploadFile();
+
+  // console.log(obj);
+};
