@@ -69,28 +69,28 @@
             <div class="w3-round w3-border w3-padding">
               <h4>users</h4>
               <hr />
-              <h2><b>449</b></h2>
+              <h2><b id="totalUsers">449</b></h2>
             </div>
           </div>
           <div class="w3-col l3">
             <div class="w3-round w3-border w3-padding">
               <h4>Lost Items</h4>
               <hr />
-              <h2><b>65</b></h2>
+              <h2><b id="lostItems">65</b></h2>
             </div>
           </div>
           <div class="w3-col l3">
             <div class="w3-round w3-border w3-padding">
               <h4>Recovered Items</h4>
               <hr />
-              <h2><b>52</b></h2>
+              <h2><b id="recoveredItems">52</b></h2>
             </div>
           </div>
           <div class="w3-col l3">
             <div class="w3-round w3-border w3-padding">
               <h4>Reclaimed Items</h4>
               <hr />
-              <h2><b>12</b></h2>
+              <h2><b id="reclaimedItems">12</b></h2>
             </div>
           </div>
         </div>
@@ -184,6 +184,23 @@
     </div>
 
     <script src="./js/jquery/jquery.min.js"></script>
+    <script>
+      $.get("./php/items.php?totalUsers=", function (data) {
+        // console.log(data);
+        $("#totalUsers").html(data);
+      });
+      $.get("./php/items.php?lostItems=", function (data) {
+        // console.log(data);
+        $("#lostItems").html(data);
+      });
+      $.get("./php/items.php?recoveredItems=", function (data) {
+        // console.log(data);
+        $("#recoveredItems").html(data);
+      });
+      // $.get('./php/items.php?totalUsers=', function(data){
+      //   console.log(data);
+      // })
+    </script>
     <script src="./js/script.js"></script>
   </body>
 </html>
