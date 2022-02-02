@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <link rel="stylesheet" href="css/w3/w3.css" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <!-- Modals in the house -->
+    <div class="w3-modal" id="newMessage">
+      <div
+        class="w3-modal-content w3-card-4 w3-white w3-round-large"
+        style="width: 23rem"
+      >
+        <div class="w3-padding">
+          <span class="w3-large">New Message</span>
+          <div class="w3-right">
+            <button class="w3-button w3-large" onclick="slideUp('newMessage')">
+              &times;
+            </button>
+          </div>
+        </div>
+        <hr />
+        <form class="w3-padding">
+          <label for="">To</label>
+          <input type="text" class="w3-input w3-border w3-round" />
+          <br />
+          <label for="">Message</label>
+          <textarea class="w3-input w3-border w3-round"></textarea><br />
+          <button
+            class="w3-button w3-round w3-block"
+            style="
+              background-image: linear-gradient(90deg, #4192f3, #5232f3);
+              color: white;
+            "
+          >
+            Send Message
+          </button>
+          <br />
+        </form>
+      </div>
+    </div>
+
+    <div class="w3-bar top-bar">
+      <a href="#" class="w3-bar-item">Equipment tracker</a>
+      <div class="w3-right">
+        <div
+          class="w3-badge w3-hide-small w3-grey user-icon w3-bar-item"
+          style="margin-top: 8px"
+        >
+          FA
+        </div>
+        <div
+          class="w3-bar-item w3-hide-small user-text"
+          style="margin-top: 8px"
+        >
+          Felabs
+        </div>
+        <button
+          onclick="toggleNav('mobileNav')"
+          class="nav-icon w3-hide-medium w3-bar-item w3-hide-large"
+          style="margin-top: 8px"
+        >
+          nav
+        </button>
+      </div>
+    </div>
+    <div class="w3-sidebar side-bar" id="mobileNav">
+      <br />
+      <a href="./index.html" class="w3-bar-item">Dashboard</a>
+      <a href="./items.html" class="w3-bar-item">Items</a>
+      <a href="./messages.html" class="w3-bar-item"
+        >Messages
+        <div class="w3-tag w3-round-xlarge w3-blue">2</div></a
+      >
+      <a href="./staff.html" class="w3-bar-item">Staff</a>
+      <a href="./reports.html" class="w3-bar-item">Reports</a>
+    </div>
+
+    <div id="main">
+      <br />
+      <div class="w3-auto">
+        <div class="w3-padding">
+          <div class="w3-bar w3-padding-large w3-light-grey">
+            <button
+              class="w3-button w3-bar-item w3-round"
+              style="
+                background-image: linear-gradient(90deg, #4192f3, #5232f3);
+                color: white;
+              "
+              onclick="slideDown('newMessage')"
+            >
+              New Message
+            </button>
+            <div class="w3-right">
+              <input
+                type="text"
+                class="w3-bar-item w3-input w3-border w3-round"
+                placeholder="search"
+              />
+            </div>
+          </div>
+        </div>
+        <br />
+        <div class="w3-padding">
+          <div
+            class="w3-container w3-padding w3-round-large w3-margin w3-border"
+            style="display: flex"
+          >
+            <div
+              class="w3-light-grey w3-padding w3-round"
+              style="width: 50px; height: 50px"
+            >
+              <span class="w3-large">FA</span>
+            </div>
+            &nbsp;
+            <div>
+              <small>12/1/2001</small> | <small>Felix Awere</small> |
+              <small>Admin</small>
+              <p>I did you wrong, you did me wrong.</p>
+            </div>
+          </div>
+          <div
+            class="w3-container w3-padding w3-round-large w3-margin w3-border"
+            style="display: flex"
+          >
+            <div
+              class="w3-light-grey w3-padding w3-round"
+              style="width: 50px; height: 50px"
+            >
+              <span class="w3-large">JN</span>
+            </div>
+            &nbsp;
+            <div>
+              <small>12/1/2001</small> | <small>Judith Nyamwanda</small> |
+              <small>Admin</small>
+              <p>I dont wanna lose this relationship, let's just work it out</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="./js/jquery/jquery.min.js"></script>
+    <script src="./js/script.js"></script>
+  </body>
+</html>

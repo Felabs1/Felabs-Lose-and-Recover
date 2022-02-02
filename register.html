@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <link rel="stylesheet" href="css/w3/w3.css" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div class="wallpaper">
+      <div class="overlay">
+        <br /><br />
+        <div class="w3-auto" style="width: 30rem">
+          <div class="w3-card-4 w3-margin w3-white w3-round">
+            <div class="w3-padding">
+              <h3>Register</h3>
+            </div>
+            <hr />
+            <form class="w3-padding">
+              <label for="">Full Name</label>
+              <input
+                type="text"
+                id="fullName"
+                class="w3-input w3-border w3-round"
+                placeholder="type Here"
+              /><br />
+              <label for="">Admission</label>
+              <input
+                type="text"
+                id="admission"
+                class="w3-input w3-border w3-round"
+                placeholder="eg, DICT/J11/088"
+              /><br />
+              <label for="">Password</label>
+              <input
+                type="password"
+                id="password"
+                class="w3-input w3-border w3-round"
+              /><br />
+              <label for="">Confirm password</label>
+              <input
+                type="password"
+                id="confirmPassword"
+                class="w3-input w3-border w3-round"
+              /><br />
+              <button
+                onclick="register()"
+                type="button"
+                class="w3-button w3-block w3-round"
+                style="
+                  background-image: linear-gradient(90deg, #4192f3, #5232f3);
+                  color: white;
+                "
+              >
+                Register
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="./js/jquery/jquery.min.js"></script>
+    <script src="./js/script.js"></script>
+  </body>
+</html>

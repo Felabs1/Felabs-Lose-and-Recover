@@ -1,0 +1,292 @@
+<script>
+  let request = new XMLHttpRequest();
+  request.open("GET", "./php/main.php?cookies=true", true);
+  request.onreadystatechange = function () {
+    if (this.readyState === 4 && this.status === 200) {
+      result = JSON.parse(this.responseText);
+      // console.log(result);
+      if (result.username === "") {
+        window.location.href = "./login.html";
+      }
+    }
+  };
+  request.send();
+  // console.log("loaded");
+</script>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>items</title>
+
+    <link rel="stylesheet" href="css/w3/w3.css" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div class="w3-modal" id="newMessage">
+      <div
+        class="w3-modal-content w3-card-4 w3-white w3-round-large"
+        style="width: 33rem"
+      >
+        <div class="w3-padding">
+          <span class="w3-large">Lost Item</span>
+          <div class="w3-right">
+            <button class="w3-button w3-large" onclick="slideUp('newMessage')">
+              &times;
+            </button>
+          </div>
+        </div>
+        <hr />
+        <form class="w3-padding">
+          <div class="w3-row-padding w3-stretch">
+            <div class="w3-col l6">
+              <label for="">Admission No</label>
+              <input
+                type="text"
+                id="rAdmNo"
+                class="w3-input w3-border w3-round"
+              />
+            </div>
+            <div class="w3-col l6">
+              <label for="">National Id</label>
+              <input
+                type="text"
+                id="rNatId"
+                class="w3-input w3-border w3-round"
+              />
+            </div>
+          </div>
+          <br />
+          <div class="w3-row-padding w3-stretch">
+            <div class="w3-col l4">
+              <label>Item name</label
+              ><input
+                id="rItemName"
+                type="text"
+                class="w3-input w3-border w3-round"
+              />
+            </div>
+            <div class="w3-col l4">
+              <label>Location</label
+              ><input
+                type="text"
+                id="rLocation"
+                class="w3-input w3-border w3-round"
+              />
+            </div>
+            <div class="w3-col l4">
+              <label>Date realised</label
+              ><input
+                type="date"
+                id="rDateRealised"
+                class="w3-input w3-border w3-round"
+              />
+            </div>
+          </div>
+          <br />
+          <div class="w3-row-padding w3-stretch">
+            <div class="w3-col">
+              <label for="">Description</label>
+              <textarea
+                id="rDescription"
+                class="w3-input w3-border w3-round"
+              ></textarea>
+            </div>
+          </div>
+          <button
+            type="button"
+            onclick="reportLost()"
+            class="w3-button w3-round w3-block"
+            style="
+              background-image: linear-gradient(90deg, #4192f3, #5232f3);
+              color: white;
+            "
+          >
+            Report
+          </button>
+          <br />
+        </form>
+      </div>
+    </div>
+
+    <div class="w3-modal" id="recoveredItem">
+      <div
+        class="w3-modal-content w3-card-4 w3-white w3-round-large"
+        style="width: 33rem"
+      >
+        <div class="w3-padding">
+          <span class="w3-large">Recovered Item</span>
+          <div class="w3-right">
+            <button
+              class="w3-button w3-large"
+              onclick="slideUp('recoveredItem')"
+            >
+              &times;
+            </button>
+          </div>
+        </div>
+        <hr />
+        <form class="w3-padding">
+          <div class="w3-row-padding w3-stretch">
+            <div class="w3-col l6">
+              <label for="">Item Name</label>
+              <input type="text" class="w3-input w3-border w3-round" />
+            </div>
+
+            <div class="w3-col l6">
+              <label for="">Name Of Recoverer</label>
+              <input type="text" class="w3-input w3-border w3-round" />
+            </div>
+          </div>
+          <br />
+          <div class="w3-row-padding w3-stretch">
+            <div class="w3-col l6">
+              <label>State Of Item</label>
+              <!-- <input type="text" class="w3-input w3-border w3-round" />
+               -->
+              <select id="" class="w3-select w3-border w3-round">
+                <option value="good">Good</option>
+                <option value="fair">Fair</option>
+                <option value="damaged">damaged</option>
+              </select>
+            </div>
+            <div class="w3-col l6">
+              <label>Image</label
+              ><input type="file" class="w3-input w3-border w3-round" />
+            </div>
+          </div>
+          <br />
+          <div class="w3-row-padding w3-stretch">
+            <div class="w3-col l6">
+              <label for="">Recoverer Id No</label>
+              <input class="w3-input w3-border w3-round" />
+            </div>
+            <div class="w3-col l6">
+              <label>Location Recovered</label
+              ><input type="text" class="w3-input w3-border w3-round" />
+            </div>
+          </div>
+          <button
+            class="w3-button w3-round w3-block"
+            style="
+              background-image: linear-gradient(90deg, #4192f3, #5232f3);
+              color: white;
+            "
+          >
+            Send Message
+          </button>
+          <br />
+        </form>
+      </div>
+    </div>
+    <div class="w3-bar top-bar">
+      <a href="#" class="w3-bar-item">Equipment tracker</a>
+      <div class="w3-right">
+        <div
+          class="w3-badge w3-hide-small w3-grey user-icon w3-bar-item"
+          style="margin-top: 8px"
+        >
+          FA
+        </div>
+        <div
+          class="w3-bar-item w3-hide-small user-text"
+          style="margin-top: 8px"
+        >
+          Felabs
+        </div>
+        <button
+          onclick="toggleNav('mobileNav')"
+          class="nav-icon w3-hide-medium w3-bar-item w3-hide-large"
+          style="margin-top: 8px"
+        >
+          nav
+        </button>
+      </div>
+    </div>
+    <div class="w3-sidebar side-bar" id="mobileNav">
+      <br />
+      <a href="./index.html" class="w3-bar-item">Dashboard</a>
+      <a href="./items.html" class="w3-bar-item">Items</a>
+      <a href="./messages.html" class="w3-bar-item"
+        >Messages
+        <div class="w3-tag w3-round-xlarge w3-blue">2</div></a
+      >
+      <a href="./staff.html" class="w3-bar-item">Staff</a>
+      <a href="./reports.html" class="w3-bar-item">Reports</a>
+    </div>
+
+    <div id="main">
+      <br />
+      <div class="w3-auto">
+        <div class="w3-padding">
+          <div class="w3-bar w3-padding-large w3-light-grey">
+            <button
+              class="w3-button w3-bar-item w3-round"
+              style="
+                background-image: linear-gradient(90deg, #4192f3, #5232f3);
+                color: white;
+              "
+              onclick="slideDown('newMessage')"
+            >
+              Report Lost Item
+            </button>
+            <button
+              class="w3-button w3-bar-item w3-round"
+              style="
+                background-image: linear-gradient(90deg, #4192f3, #5232f3);
+                color: white;
+              "
+              onclick="slideDown('recoveredItem')"
+            >
+              Record recovered item
+            </button>
+            <div class="w3-right">
+              <input
+                type="text"
+                class="w3-bar-item w3-input w3-border w3-round"
+                placeholder="search"
+              />
+            </div>
+          </div>
+        </div>
+        <br />
+        <div class="w3-row-padding">
+          <div class="w3-col l4">
+            <div class="w3-card">
+              <div
+                class="background-image"
+                style="
+                  height: 200px;
+                  background-image: url('./images/assets/watch.jpg');
+                  background-size: cover;
+                  background-position: center;
+                "
+              >
+                <div
+                  style="background-color: rgba(0, 0, 0, 0.4); height: 100%"
+                ></div>
+              </div>
+              <div class="w3-container">
+                <h3><b>Wrist Watch</b></h3>
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Consequuntur laboriosam, voluptas maxime numquam perferendis
+                  asperiores culpa fuga saepe placeat blanditiis
+                </p>
+                <button
+                  class="w3-button w3-border w3-center w3-bar-item w3-round"
+                >
+                  Request a Reclaim
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="./js/jquery/jquery.min.js"></script>
+    <script src="./js/script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <link rel="stylesheet" href="css/w3/w3.css" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div class="w3-bar top-bar">
+      <a href="#" class="w3-bar-item">Equipment tracker</a>
+      <div class="w3-right">
+        <div
+          class="w3-badge w3-hide-small w3-grey user-icon w3-bar-item"
+          style="margin-top: 8px"
+        >
+          FA
+        </div>
+        <div
+          class="w3-bar-item w3-hide-small user-text"
+          style="margin-top: 8px"
+        >
+          Felabs
+        </div>
+        <button
+          onclick="toggleNav('mobileNav')"
+          class="nav-icon w3-hide-medium w3-bar-item w3-hide-large"
+          style="margin-top: 8px"
+        >
+          nav
+        </button>
+      </div>
+    </div>
+    <div class="w3-sidebar side-bar" id="mobileNav">
+      <br />
+      <a href="./index.html" class="w3-bar-item">Dashboard</a>
+      <a href="./items.html" class="w3-bar-item">Items</a>
+      <a href="./messages.html" class="w3-bar-item"
+        >Messages
+        <div class="w3-tag w3-round-xlarge w3-blue">2</div></a
+      >
+      <a href="./staff.html" class="w3-bar-item">Staff</a>
+      <a href="./reports.html" class="w3-bar-item">Reports</a>
+    </div>
+
+    <div id="main">
+      <br />
+      <div class="w3-auto">
+        <div class="w3-padding">
+          <div class="w3-bar w3-padding-large w3-light-grey">
+            <button
+              class="w3-button w3-bar-item w3-round"
+              style="
+                background-image: linear-gradient(90deg, #4192f3, #5232f3);
+                color: white;
+              "
+            >
+              Add New Staff
+            </button>
+            <div class="w3-right">
+              <input
+                type="text"
+                class="w3-bar-item w3-input w3-border w3-round"
+                placeholder="search"
+              />
+            </div>
+          </div>
+        </div>
+        <br />
+        <div class="w3-padding">
+          <h4>Staff</h4>
+          <table class="w3-table w3-bordered">
+            <thead>
+              <tr>
+                <th>#No</th>
+                <th>Name</th>
+                <th>User type</th>
+                <th>last login</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>kplc005</td>
+                <td>Felix Awere</td>
+                <td>Admin</td>
+                <td>today 9:14 am</td>
+                <td>
+                  <button
+                    class="w3-button w3-round"
+                    style="
+                      background-image: linear-gradient(
+                        90deg,
+                        #4192f3,
+                        #5232f3
+                      );
+                    "
+                  >
+                    Update
+                  </button>
+                  <button
+                    class="w3-button w3-round"
+                    style="
+                      background-image: linear-gradient(
+                        90deg,
+                        #f44336,
+                        #ff9800
+                      );
+                    "
+                  >
+                    Delete
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <script src="./js/jquery/jquery.min.js"></script>
+    <script src="./js/script.js"></script>
+  </body>
+</html>
