@@ -31,7 +31,9 @@ $.get("./php/items.php?allRecoveredItems", function (data) {
       result[i].location_recovered +
       '\
           </p>\
-          <button\
+          <button onclick=getPage("./recovery.html?id=' +
+      result[i].id +
+      '")\
             class="w3-button w3-border w3-center w3-bar-item w3-round"\
           >\
             Request a Reclaim\
@@ -44,3 +46,7 @@ $.get("./php/items.php?allRecoveredItems", function (data) {
   $("#foundItems").html(txt);
   console.log(result);
 });
+
+const getPage = (id) => {
+  window.location.href = id;
+};

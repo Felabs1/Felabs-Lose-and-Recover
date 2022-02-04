@@ -1,18 +1,4 @@
-<script>
-  let request = new XMLHttpRequest();
-  request.open("GET", "./php/main.php?cookies=true", true);
-  request.onreadystatechange = function () {
-    if (this.readyState === 4 && this.status === 200) {
-      result = JSON.parse(this.responseText);
-      // console.log(result);
-      if (result.username === "") {
-        window.location.href = "./login.html";
-      }
-    }
-  };
-  request.send();
-  // console.log("loaded");
-</script>
+<script src="./js/index.js"></script>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -94,7 +80,7 @@
             </div>
           </div>
         </div>
-        <div class="w3-padding">
+        <div class="w3-padding" id="tblRecoveredItems">
           <h4>Recovered Items</h4>
           <table class="w3-table w3-bordered">
             <thead>
@@ -132,7 +118,7 @@
           </table>
         </div>
         <br />
-        <div class="w3-padding">
+        <div class="w3-padding" id="reportedLostItems">
           <h4>Reported Lost Items</h4>
           <table class="w3-table w3-bordered">
             <thead>
@@ -184,23 +170,7 @@
     </div>
 
     <script src="./js/jquery/jquery.min.js"></script>
-    <script>
-      $.get("./php/items.php?totalUsers=", function (data) {
-        // console.log(data);
-        $("#totalUsers").html(data);
-      });
-      $.get("./php/items.php?lostItems=", function (data) {
-        // console.log(data);
-        $("#lostItems").html(data);
-      });
-      $.get("./php/items.php?recoveredItems=", function (data) {
-        // console.log(data);
-        $("#recoveredItems").html(data);
-      });
-      // $.get('./php/items.php?totalUsers=', function(data){
-      //   console.log(data);
-      // })
-    </script>
+    <script src="./js/index.js"></script>
     <script src="./js/script.js"></script>
   </body>
 </html>

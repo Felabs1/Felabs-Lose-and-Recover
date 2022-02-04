@@ -1,3 +1,4 @@
+<script src="./js/cookies.js"></script>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -8,6 +9,10 @@
 
     <link rel="stylesheet" href="css/w3/w3.css" />
     <link rel="stylesheet" href="css/style.css" />
+    <style>
+      @media (max-width: 600px) {
+      }
+    </style>
   </head>
   <body>
     <div class="w3-bar top-bar">
@@ -56,7 +61,7 @@
         </div>
         <br />
         <div class="w3-row-padding">
-          <div class="w3-col l6">
+          <div class="w3-col l6" id="recoveryDetails">
             <div
               class="background-image"
               style="
@@ -72,19 +77,57 @@
             </div>
             <h4>Wrist Watch</h4>
           </div>
-          <div class="w3-col m6">
-            <div class="w3-padding">
-              <h4>Fill The Details Below</h4>
-              <form action="">
-                <label for="">Claimnant Name</label>
-                <input type="text" class="w3-input w3-border w3-round" />
-              </form>
-            </div>
+          <div class="w3-col l6">
+            <h4>Fill The Details Below</h4>
+            <form action="">
+              <label for="">Claimnant Name</label>
+              <input
+                placeholder="enter your name"
+                type="text"
+                id="claimnantName"
+                class="w3-input w3-border w3-round"
+              />
+              <br />
+              <label for="">Claimnant Id No</label>
+              <input
+                type="text"
+                id="claimnantIdNo"
+                placeholder="enter your id number"
+                class="w3-input w3-border w3-round"
+              />
+              <br />
+              <label for="">Admission Number</label>
+              <input
+                type="text"
+                id="admissionNumber"
+                placeholder="enter your admission"
+                class="w3-input w3-border w3-round"
+              />
+              <br />
+              <label for="">Phone</label>
+              <input
+                type="text"
+                id="phoneNumber"
+                placeholder="eg 0787654321"
+                class="w3-input w3-border w3-round"
+              />
+              <br />
+              <div class="w3-center">
+                <button
+                  type="button"
+                  onclick="sendRequest()"
+                  class="w3-button w3-border w3-round"
+                >
+                  Send Request
+                </button>
+              </div>
+            </form>
           </div>
         </div>
       </div>
     </div>
     <script src="./js/jquery/jquery.min.js"></script>
+    <script src="./js/recovery.js"></script>
     <script src="./js/script.js"></script>
   </body>
 </html>

@@ -189,3 +189,82 @@ const addFoundItem = () => {
 
   // console.log(obj);
 };
+
+sendRequest = () => {
+  let claimnantName = $("#claimnantName").val();
+  let claimnantIdNo = $("#claimnantIdNo").val();
+  let admissionNumber = $("#admissionNumber").val();
+  let phoneNumber = $("#phoneNumber").val();
+  let id = window.location.href;
+  var url = new URL(id);
+  var c = url.searchParams.get("id");
+  // console.log(c);
+
+  if (
+    claimnantName === "" ||
+    claimnantIdNo === "" ||
+    admissionNumber === "" ||
+    phoneNumber === ""
+  ) {
+    alert("please fill in all the details");
+    return;
+  }
+
+  const obj = {
+    claimnantName,
+    claimnantIdNo,
+    admissionNumber,
+    phoneNumber,
+    c,
+  };
+
+  let dbParam = JSON.stringify(obj);
+  let request = new XMLHttpRequest();
+  request.open("POST", "./php/items.php", true);
+
+  request.onreadystatechange = function () {
+    if (this.readyState == 4 && this.status == 200) {
+      result = this.responseText;
+      console.log(result);
+    }
+  };
+  request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+  request.send("requestRecoveredData=" + dbParam);
+};
+
+const addStaff = () => {
+  let staffName = $("#staffName").val();
+  let userName = $("#username").val();
+  let password = $("#password").val();
+  let confirmPassword = $("#confirmPassword").val();
+
+  if (
+    staffName === "" ||
+    userName === "" ||
+    password === "" ||
+    confirmPassword === ""
+  ) {
+    alert("please fill in all the forms");
+    return;
+  }
+
+  if (password !== confirmPassword) {
+    alert("passwords are not matching");
+    return;
+  }
+
+  obj = { staffName, userName, password, confirmPassword };
+  // console.log(obj);
+  let dbParam = JSON.stringify(obj);
+  let request = new XMLHttpRequest();
+  request.open("POST", "./php/staff.php", true);
+
+  request.onreadystatechange = function () {
+    if (this.readyState == 4 && this.status == 200) {
+      result = this.responseText;
+      console.log(result);
+    }
+  };
+  request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+  request.send("staffData=" + dbParam);
+};

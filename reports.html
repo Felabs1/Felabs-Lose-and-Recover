@@ -54,6 +54,7 @@
             <div class="">
               <label class="w3-bar-item">From</label>
               <input
+                id="date1"
                 type="date"
                 class="w3-bar-item w3-input w3-border w3-round"
                 placeholder="search"
@@ -61,6 +62,7 @@
               <label class="w3-bar-item">To</label>
 
               <input
+                id="date2"
                 type="date"
                 class="w3-bar-item w3-input w3-border w3-round"
                 placeholder="search"
@@ -68,6 +70,7 @@
             </div>
             &nbsp; &nbsp; &nbsp;
             <button
+              id="reportsData"
               class="w3-button w3-bar-item w3-round"
               style="
                 background-image: linear-gradient(90deg, #4192f3, #5232f3);
@@ -80,7 +83,7 @@
           </div>
         </div>
         <br />
-        <div class="w3-padding">
+        <div class="w3-padding" id="recoveryReports">
           <h4>Recovery Reports</h4>
           <table class="w3-table w3-bordered">
             <thead>
@@ -129,7 +132,7 @@
           </table>
         </div>
         <br />
-        <div class="w3-padding">
+        <div class="w3-padding" id="reportedLostItems">
           <h4>Reported Lost Items</h4>
           <table class="w3-table w3-bordered">
             <thead>
@@ -184,6 +187,7 @@
       </div>
     </div>
     <script src="./js/jquery/jquery.min.js"></script>
+    <script src="./js/reports.js"></script>
     <script src="./js/script.js"></script>
   </body>
 </html>

@@ -46,6 +46,23 @@ if(isset($_POST['recoveredItemData'])){
 
 }
 
+if(isset($_POST['requestRecoveredData'])){
+    $obj = json_decode($_POST['requestRecoveredData']);
+    $insert = $crud->insert_data('recovery_request',['claimnant_name' => $obj->claimnantName, 'claimnant_id_no' => $obj->claimnantIdNo, 'claimnant_admission' => $obj->admissionNumber, 'claimnant_phone' => $obj->phoneNumber, 'recovered_item_id' => $obj->c]);
+    if($insert){
+        echo "success";
+    }else{
+        echo $crud->conn->error;
+    }
+}
+
+
+
+
+
+
+
+
 if(isset($_GET['totalUsers'])){
     $myrow = $crud->fetch_data("SELECT * FROM students");
     echo count($myrow);
