@@ -1,18 +1,5 @@
-<script>
-  let request = new XMLHttpRequest();
-  request.open("GET", "./php/main.php?cookies=true", true);
-  request.onreadystatechange = function () {
-    if (this.readyState === 4 && this.status === 200) {
-      result = JSON.parse(this.responseText);
-      // console.log(result);
-      if (result.username === "") {
-        window.location.href = "./login.html";
-      }
-    }
-  };
-  request.send();
-  // console.log("loaded");
-</script>
+<script src="./js/cookies.js"></script>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -203,12 +190,6 @@
       <a href="#" class="w3-bar-item">Equipment tracker</a>
       <div class="w3-right">
         <div
-          class="w3-badge w3-hide-small w3-grey user-icon w3-bar-item"
-          style="margin-top: 8px"
-        >
-          FA
-        </div>
-        <div
           class="w3-bar-item w3-hide-small user-text"
           style="margin-top: 8px"
         >
@@ -224,18 +205,23 @@
       </div>
     </div>
     <div class="w3-sidebar side-bar" id="mobileNav">
+      <br /><br />
+      <br />
       <br />
       <a href="./index.html" class="w3-bar-item">Dashboard</a>
       <a href="./items.html" class="w3-bar-item">Items</a>
-      <a href="./messages.html" class="w3-bar-item"
+      <!-- <a href="./messages.html" class="w3-bar-item"
         >Messages
         <div class="w3-tag w3-round-xlarge w3-blue">2</div></a
-      >
-      <a href="./staff.html" class="w3-bar-item">Staff</a>
-      <a href="./reports.html" class="w3-bar-item">Reports</a>
+      > -->
+      <a href="./staff.html" class="w3-bar-item staff-nav">Staff</a>
+      <a href="./reports.html" class="w3-bar-item staff-nav">Reports</a>
+      <a onclick="logout()" class="w3-bar-item">Log Out</a>
     </div>
 
     <div id="main">
+      <br /><br />
+      <br />
       <br />
       <div class="w3-auto">
         <div class="w3-padding">
@@ -243,15 +229,16 @@
             <button
               class="w3-button w3-bar-item w3-round"
               style="
+                margin-right: 10px;
                 background-image: linear-gradient(90deg, #4192f3, #5232f3);
                 color: white;
               "
               onclick="slideDown('newMessage')"
             >
-              Report Lost Item
-            </button>
+              Report Lost Item</button
+            >&nbsp;&nbsp;&nbsp;
             <button
-              class="w3-button w3-bar-item w3-round"
+              class="w3-button adminbtn w3-bar-item w3-round"
               style="
                 background-image: linear-gradient(90deg, #4192f3, #5232f3);
                 color: white;
@@ -260,18 +247,18 @@
             >
               Record recovered item
             </button>
-            <div class="w3-right">
+            <!-- <div class="w3-right">
               <input
                 type="text"
                 class="w3-bar-item w3-input w3-border w3-round"
                 placeholder="search"
               />
-            </div>
+            </div> -->
           </div>
         </div>
         <br />
         <div class="w3-row-padding" id="foundItems">
-          <div class="w3-col l4">
+          <!-- <div class="w3-col l4">
             <div class="w3-card">
               <div
                 class="background-image"
@@ -300,6 +287,9 @@
                 </button>
               </div>
             </div>
+          </div> -->
+          <div class="w3-center">
+            <img src="./images/assets/Rolling-1s-200px.gif" alt="loading..." />
           </div>
         </div>
       </div>

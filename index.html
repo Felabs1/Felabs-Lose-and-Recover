@@ -1,4 +1,4 @@
-<script src="./js/index.js"></script>
+<script src="./js/cookies.js"></script>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -15,12 +15,7 @@
       <a href="#" class="w3-bar-item">Equipment tracker</a>
       <div class="w3-right">
         <div
-          class="w3-badge w3-hide-small w3-grey user-icon w3-bar-item"
-          style="margin-top: 8px"
-        >
-          FA
-        </div>
-        <div
+          id="sessionf"
           class="w3-bar-item w3-hide-small user-text"
           style="margin-top: 8px"
         >
@@ -37,135 +32,72 @@
     </div>
     <div class="w3-sidebar side-bar" id="mobileNav">
       <br />
+      <br />
+      <br />
+      <br />
       <a href="./index.html" class="w3-bar-item">Dashboard</a>
       <a href="./items.html" class="w3-bar-item">Items</a>
-      <a href="./messages.html" class="w3-bar-item"
+      <!-- <a href="./messages.html" class="w3-bar-item"
         >Messages
         <div class="w3-tag w3-round-xlarge w3-blue">2</div></a
-      >
-      <a href="./staff.html" class="w3-bar-item">Staff</a>
-      <a href="./reports.html" class="w3-bar-item">Reports</a>
+      > -->
+      <a href="./staff.html" class="w3-bar-item staff-nav">Staff</a>
+      <a href="./reports.html" class="w3-bar-item staff-nav">Reports</a>
+      <a onclick="logout()" class="w3-bar-item">Log Out</a>
     </div>
 
     <div id="main">
+      <br /><br />
+      <br />
       <br />
       <div class="w3-auto">
         <div class="w3-row-padding">
           <div class="w3-col l3">
-            <div class="w3-round w3-border w3-padding">
-              <h4>users</h4>
+            <div
+              class="w3-round w3-leftbar w3-border-blue w3-card-4 w3-padding"
+            >
+              <h4 class="w3-text-blue w3-small">users</h4>
               <hr />
-              <h2><b id="totalUsers">449</b></h2>
+              <h2><b id="totalUsers">loading...</b></h2>
             </div>
           </div>
           <div class="w3-col l3">
-            <div class="w3-round w3-border w3-padding">
-              <h4>Lost Items</h4>
+            <div class="w3-round w3-leftbar w3-border-red w3-card-4 w3-padding">
+              <h4 class="w3-text-red w3-small">Lost Items</h4>
               <hr />
-              <h2><b id="lostItems">65</b></h2>
+              <h2><b id="lostItems">loading...</b></h2>
             </div>
           </div>
           <div class="w3-col l3">
-            <div class="w3-round w3-border w3-padding">
-              <h4>Recovered Items</h4>
+            <div
+              class="w3-round w3-leftbar w3-border-pink w3-card-4 w3-padding"
+            >
+              <h4 class="w3-text-pink w3-small">Recovered Items</h4>
               <hr />
-              <h2><b id="recoveredItems">52</b></h2>
+              <h2><b id="recoveredItems">loading...</b></h2>
             </div>
           </div>
           <div class="w3-col l3">
-            <div class="w3-round w3-border w3-padding">
-              <h4>Reclaimed Items</h4>
+            <div
+              class="w3-round w3-leftbar w3-border-teal w3-card-4 w3-padding"
+            >
+              <h4 class="w3-text-teal w3-small">Reclaimed Items</h4>
               <hr />
-              <h2><b id="reclaimedItems">12</b></h2>
+              <h2><b id="reclaimedItems">loading...</b></h2>
             </div>
           </div>
         </div>
-        <div class="w3-padding" id="tblRecoveredItems">
-          <h4>Recovered Items</h4>
-          <table class="w3-table w3-bordered">
-            <thead>
-              <tr>
-                <th>Item Name</th>
-                <th>Owner</th>
-                <th>Date Recovered</th>
-                <th>Recoverer Name</th>
-                <th>Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Sch Id</td>
-                <td>DICT/J18/067</td>
-                <td>22-12-22</td>
-                <td>Rec One</td>
-                <td>
-                  <button class="w3-button w3-round w3-grey">View</button>
-                  <button
-                    class="w3-button w3-round"
-                    style="
-                      background-image: linear-gradient(
-                        90deg,
-                        #4192f3,
-                        #5232f3
-                      );
-                    "
-                  >
-                    Update
-                  </button>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+        <div class="w3-padding staff-nav" id="tblRecoveredItems">
+          <div class="w3-center">
+            <img src="./images/assets/Rolling-1s-200px.gif" alt="loading..." />
+          </div>
         </div>
         <br />
-        <div class="w3-padding" id="reportedLostItems">
-          <h4>Reported Lost Items</h4>
-          <table class="w3-table w3-bordered">
-            <thead>
-              <tr>
-                <th>#No</th>
-                <th>Name</th>
-                <th>User type</th>
-                <th>last login</th>
-                <th>Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>kplc005</td>
-                <td>Felix Awere</td>
-                <td>Admin</td>
-                <td>today 9:14 am</td>
-                <td>
-                  <button
-                    class="w3-button w3-round"
-                    style="
-                      background-image: linear-gradient(
-                        90deg,
-                        #4192f3,
-                        #5232f3
-                      );
-                    "
-                  >
-                    Update
-                  </button>
-                  <!-- <button
-                    class="w3-button w3-round"
-                    style="
-                      background-image: linear-gradient(
-                        90deg,
-                        #f44336,
-                        #ff9800
-                      );
-                    "
-                  >
-                    Delete
-                  </button> -->
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+        <div class="w3-padding staff-nav" id="reportedLostItems"></div>
+        <br />
+        <div class="w3-padding staff-nav" id="tblreclaimRequests"></div>
+        <br />
+        <div class="w3-padding staff-nav" id="tblreclaimedItems"></div>
       </div>
     </div>
 

@@ -68,7 +68,16 @@ const register = () => {
   request.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
       result = this.responseText;
-      console.log(result);
+      if (result === "success") {
+        alert("successfully registered, you can now log in");
+        window.location.href = "./login.html";
+      } else if (result === "admission_exist") {
+        alert("admission number exist");
+      } else {
+        alert(
+          "i think the error might lie in the server, Please contact the Admin"
+        );
+      }
     }
   };
   request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
@@ -124,6 +133,17 @@ const reportLost = () => {
     if (this.readyState == 4 && this.status == 200) {
       result = this.responseText;
       console.log(result);
+      if (result === "success") {
+        alert(
+          "Your report has successfully been received, please check with the found items if yours is recognisable"
+        );
+        $("#rAdmNo").val("");
+        $("#rNatId").val("");
+        $("#rLocation").val("");
+        $("#rDateRealised").val("");
+        $("#rDescription").val("");
+        $("#rItemName").val("");
+      }
     }
   };
   request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
@@ -174,7 +194,16 @@ const addFoundItem = () => {
     request.onreadystatechange = function () {
       if (this.readyState == 4 && this.status == 200) {
         result = this.responseText;
-        console.log(result);
+        // console.log(result);
+        if (result === "success") {
+          alert("recovered item added successfully");
+
+          $("#recItemName").val("");
+          $("#recovererName").val("");
+          $("#recItemState").val("");
+          $("#recIdNo").val("");
+          $("#recLocation").val("");
+        }
       }
     };
     request.setRequestHeader(
@@ -225,7 +254,16 @@ sendRequest = () => {
   request.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
       result = this.responseText;
-      console.log(result);
+      // console.log(result);
+      if ((result = "success")) {
+        alert(
+          "your request has been received, you will be contacted soon. please come with the proofs of ownership for your item"
+        );
+        $("#claimnantName").val("");
+        $("#claimnantIdNo").val("");
+        $("#admissionNumber").val("");
+        $("#phoneNumber").val("");
+      }
     }
   };
   request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
@@ -268,3 +306,112 @@ const addStaff = () => {
   request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
   request.send("staffData=" + dbParam);
 };
+
+function printDocument(id) {
+  // console.log("connected");
+  var printContent = document.getElementById(id);
+  var WinPrint = window.open("", "", "width=900, height=650");
+  WinPrint.document.write(`<!DOCTYPE html>\
+  <html lang="en">\
+  
+  <head>\
+      <meta charset="UTF-8">\
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">\
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">\
+      <title>Lost / Recovered Item Reports</title>\
+        <link rel="stylesheet" href="./css/w3/w3.css" />
+        <link rel="stylesheet" href="./css/style.css" />
+      <style>\
+      th,\
+      td {\
+          border: 1px solid #ccc;\
+      }\
+      </style>\
+  </head>\
+  
+  <body class="w3-container w3-padding">${printContent.innerHTML}`);
+  WinPrint.document.close();
+  WinPrint.focus();
+  WinPrint.print();
+  WinPrint.close();
+}
+
+function confirmReclaimed() {
+  let id = $("#property_id");
+  let admission = $("#admission_number");
+  let owners_name = $("#owners_name");
+  let owners_contact = $("#owners_contact");
+
+  let obj = {
+    id: id.val(),
+    admission: admission.val(),
+    owner: owners_name.val(),
+    contact: owners_contact.val(),
+  };
+
+  if (
+    obj.id === "" ||
+    obj.admission === "" ||
+    obj.owner === "" ||
+    obj.contact === ""
+  ) {
+    alert("please fill in all the details");
+    return;
+  }
+
+  // console.log(obj);
+
+  let dbParam = JSON.stringify(obj);
+  let request = new XMLHttpRequest();
+  request.open("POST", "./php/items.php", true);
+
+  request.onreadystatechange = function () {
+    if (this.readyState == 4 && this.status == 200) {
+      result = this.responseText;
+      // console.log(result);
+      if (resultf)
+        if (result === "success") {
+          alert("Issued successfuly");
+          id.val("");
+          admission.val("");
+          owners_name.val("");
+          owners_contact.val("");
+        }
+    }
+  };
+  request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+  request.send("confirmReclaimed=" + dbParam);
+}
+
+function loginAdmin() {
+  let username = $("#admission");
+  let password = $("#password");
+
+  let data = { username: username.val(), password: password.val() };
+  if (data.username === "" || data.passwword === "") {
+    alert("please fill all fields");
+    return;
+  }
+
+  let dbParam = JSON.stringify(data);
+  let request = new XMLHttpRequest();
+  request.open("POST", "./php/staff.php", true);
+
+  request.onreadystatechange = function () {
+    if (this.readyState == 4 && this.status == 200) {
+      result = this.responseText;
+      if (result === "LOGIN_SUCCESS") {
+        window.location.href = "./index.html";
+      } else if (result === "WRONG_PASS") {
+        alert("wrong password");
+      } else if (result === "INVALID_USERNAME") {
+        alert("wrong username");
+      } else {
+        alert("it seems soething unusual happened to the server.");
+      }
+    }
+  };
+
+  request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+  request.send("loginadmin=" + dbParam);
+}

@@ -1,3 +1,5 @@
+<script src="./js/cookies.js"></script>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -13,12 +15,12 @@
     <div class="w3-bar top-bar">
       <a href="#" class="w3-bar-item">Equipment tracker</a>
       <div class="w3-right">
-        <div
+        <!-- <div
           class="w3-badge w3-hide-small w3-grey user-icon w3-bar-item"
           style="margin-top: 8px"
         >
           FA
-        </div>
+        </div> -->
         <div
           class="w3-bar-item w3-hide-small user-text"
           style="margin-top: 8px"
@@ -35,18 +37,23 @@
       </div>
     </div>
     <div class="w3-sidebar side-bar" id="mobileNav">
+      <br /><br />
+      <br />
       <br />
       <a href="./index.html" class="w3-bar-item">Dashboard</a>
       <a href="./items.html" class="w3-bar-item">Items</a>
-      <a href="./messages.html" class="w3-bar-item"
+      <!-- <a href="./messages.html" class="w3-bar-item"
         >Messages
         <div class="w3-tag w3-round-xlarge w3-blue">2</div></a
-      >
-      <a href="./staff.html" class="w3-bar-item">Staff</a>
-      <a href="./reports.html" class="w3-bar-item">Reports</a>
+      > -->
+      <a href="./staff.html" class="w3-bar-item staff-nav">Staff</a>
+      <a href="./reports.html" class="w3-bar-item staff-nav">Reports</a>
+      <a onclick="logout()" class="w3-bar-item">Log Out</a>
     </div>
 
     <div id="main">
+      <br /><br />
+      <br />
       <br />
       <div class="w3-auto">
         <div class="w3-padding">
@@ -83,106 +90,24 @@
           </div>
         </div>
         <br />
-        <div class="w3-padding" id="recoveryReports">
-          <h4>Recovery Reports</h4>
-          <table class="w3-table w3-bordered">
-            <thead>
-              <tr>
-                <th>#No</th>
-                <th>Name</th>
-                <th>User type</th>
-                <th>last login</th>
-                <th>Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>kplc005</td>
-                <td>Felix Awere</td>
-                <td>Admin</td>
-                <td>today 9:14 am</td>
-                <td>
-                  <button
-                    class="w3-button w3-round"
-                    style="
-                      background-image: linear-gradient(
-                        90deg,
-                        #4192f3,
-                        #5232f3
-                      );
-                    "
-                  >
-                    Update
-                  </button>
-                  <button
-                    class="w3-button w3-round"
-                    style="
-                      background-image: linear-gradient(
-                        90deg,
-                        #f44336,
-                        #ff9800
-                      );
-                    "
-                  >
-                    Delete
-                  </button>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+        <div id="toPrint">
+          <div class="w3-padding" id="recoveryReports"></div>
+          <br />
+          <div class="w3-padding" id="reportedLostItems"></div>
+          <br />
+          <div class="w3-padding" id="reclaimedReports"></div>
+          <br />
+          <div class="w3-padding" id="reclaimRequests"></div>
         </div>
-        <br />
-        <div class="w3-padding" id="reportedLostItems">
-          <h4>Reported Lost Items</h4>
-          <table class="w3-table w3-bordered">
-            <thead>
-              <tr>
-                <th>#No</th>
-                <th>Name</th>
-                <th>User type</th>
-                <th>last login</th>
-                <th>Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>kplc005</td>
-                <td>Felix Awere</td>
-                <td>Admin</td>
-                <td>today 9:14 am</td>
-                <td>
-                  <button
-                    class="w3-button w3-round"
-                    style="
-                      background-image: linear-gradient(
-                        90deg,
-                        #4192f3,
-                        #5232f3
-                      );
-                    "
-                  >
-                    Update
-                  </button>
-                  <button
-                    class="w3-button w3-round"
-                    style="
-                      background-image: linear-gradient(
-                        90deg,
-                        #f44336,
-                        #ff9800
-                      );
-                    "
-                  >
-                    Delete
-                  </button>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+
         <br />
         <div class="w3-center">
-          <button class="w3-button w3-light-grey w3-round">Print</button>
+          <button
+            class="w3-button w3-light-grey w3-round"
+            onclick="printDocument('toPrint')"
+          >
+            Print
+          </button>
         </div>
       </div>
     </div>

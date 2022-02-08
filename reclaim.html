@@ -9,22 +9,19 @@
 
     <link rel="stylesheet" href="css/w3/w3.css" />
     <link rel="stylesheet" href="css/style.css" />
-    <style>
-      @media (max-width: 600px) {
-      }
-    </style>
   </head>
   <body>
     <div class="w3-bar top-bar">
       <a href="#" class="w3-bar-item">Equipment tracker</a>
       <div class="w3-right">
         <!-- <div
-          class="w3-badge w3-hide-small w3-grey user-icon w3-bar-item"
+          class="w3-tag w3-hide-small w3-grey user-icon w3-bar-item"
           style="margin-top: 8px"
         >
           FA
         </div> -->
         <div
+          id="sessionf"
           class="w3-bar-item w3-hide-small user-text"
           style="margin-top: 8px"
         >
@@ -40,7 +37,8 @@
       </div>
     </div>
     <div class="w3-sidebar side-bar" id="mobileNav">
-      <br /><br />
+      <br />
+      <br />
       <br />
       <br />
       <a href="./index.html" class="w3-bar-item">Dashboard</a>
@@ -50,7 +48,7 @@
         <div class="w3-tag w3-round-xlarge w3-blue">2</div></a
       > -->
       <a href="./staff.html" class="w3-bar-item staff-nav">Staff</a>
-      <a href="./reports.html" class="w3-bar-item staff-nav">Reports</a>
+      <a href="./reports.html" class="w3-bar-item">Reports</a>
       <a onclick="logout()" class="w3-bar-item">Log Out</a>
     </div>
 
@@ -59,12 +57,6 @@
       <br />
       <br />
       <div class="w3-auto">
-        <div class="w3-padding">
-          <div class="w3-bar w3-padding-large w3-light-grey">
-            | Request Item Recovery
-          </div>
-        </div>
-        <br />
         <div class="w3-row-padding">
           <div class="w3-col l6" id="recoveryDetails">
             <div
@@ -83,56 +75,47 @@
             <h4>Wrist Watch</h4>
           </div>
           <div class="w3-col l6">
-            <h4>Fill The Details Below</h4>
-            <form action="">
-              <label for="">Claimnant Name</label>
+            <form id="reclaimSubmission" action="">
+              <label for="">Property Id</label>
               <input
-                placeholder="enter your name"
+                id="property_id"
                 type="text"
-                id="claimnantName"
                 class="w3-input w3-border w3-round"
               />
-              <br />
-              <label for="">Claimnant Id No</label>
-              <input
-                type="text"
-                id="claimnantIdNo"
-                placeholder="enter your id number"
-                class="w3-input w3-border w3-round"
-              />
-              <br />
               <label for="">Admission Number</label>
               <input
+                id="admission_number"
                 type="text"
-                id="admissionNumber"
-                placeholder="enter your admission"
                 class="w3-input w3-border w3-round"
               />
-              <br />
-              <label for="">Phone</label>
+              <label for="">Owners Name</label>
               <input
+                id="owners_name"
                 type="text"
-                id="phoneNumber"
-                placeholder="eg 0787654321"
+                class="w3-input w3-border w3-round"
+              />
+              <label for="">Owners Contact</label>
+              <input
+                id="owners_contact"
+                type="text"
                 class="w3-input w3-border w3-round"
               />
               <br />
-              <div class="w3-center">
-                <button
-                  type="button"
-                  onclick="sendRequest()"
-                  class="w3-button w3-border w3-round"
-                >
-                  Send Request
-                </button>
-              </div>
+              <button
+                type="button"
+                class="w3-button w3-border w3-round"
+                onclick="confirmReclaimed()"
+              >
+                Submit
+              </button>
             </form>
           </div>
         </div>
       </div>
     </div>
+
     <script src="./js/jquery/jquery.min.js"></script>
-    <script src="./js/recovery.js"></script>
+    <script src="./js/reclaim.js"></script>
     <script src="./js/script.js"></script>
   </body>
 </html>

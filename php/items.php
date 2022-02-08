@@ -56,6 +56,26 @@ if(isset($_POST['requestRecoveredData'])){
     }
 }
 
+if(isset($_POST['confirmReclaimed'])){
+    $obj = json_decode($_POST['confirmReclaimed']);
+    $fetch = count($crud->fetch_data("SELECT * FROM confirmed_recovery WHERE item_id = '".$obj->id."'"));
+    if(fetch > 0){
+        echo "item_out";
+    }else{
+        $insert = $crud->insert_data("confirmed_recovery", ["admission_number" => $obj->admission, "owner_name" => $obj->owner, "contact" => $obj->contact, "item_id" => $obj->id]);
+        if($insert){
+            // echo "success";
+            $update = $crud->update_data("recovered_items", ["issued_out" => "yes"], ["id" => $obj->id]);
+            if($update){
+                echo "success";
+            }else{
+                echo $crud->conn->error;
+            }
+        }
+    }
+    
+}
+
 
 
 
@@ -79,7 +99,7 @@ if(isset($_GET['recoveredItems'])){
 }
 
 if(isset($_GET['allRecoveredItems'])){
-    $myrow = $crud->fetch_data("SELECT * FROM recovered_items");
+    $myrow = $crud->fetch_data("SELECT * FROM recovered_items WHERE issued_out = 'no'");
     echo json_encode($myrow);
 }
 
@@ -87,6 +107,23 @@ if(isset($_GET['allLostItems'])){
     $myrow = $crud->fetch_data("SELECT * FROM lost_items");
     echo json_encode($myrow);
 }
+
+if(isset($_GET['countReclaimedItems'])){
+    $myrow = $crud->fetch_data("SELECT * FROM recovered_items WHERE issued_out = 'yes'");
+    echo count($myrow);
+}
+
+if(isset($_GET['reclaimRequests'])){
+    $myrow = $crud->fetch_data("SELECT * FROM recovery_request");
+    echo json_encode($myrow);
+}
+
+if(isset($_GET['reclaimedItems'])){
+    $myrow = $crud->fetch_data("SELECT * FROM confirmed_recovery");
+    echo json_encode($myrow);
+}
+
+
 
 
 

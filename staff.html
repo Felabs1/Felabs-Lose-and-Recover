@@ -1,3 +1,4 @@
+<script src="./js/cookies.js"></script>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -18,7 +19,7 @@
           ><button class="w3-button w3-right" onclick="slideUp('staffModal')">
             &times;
           </button>
-          <br />
+          <hr />
         </div>
         <form class="w3-container">
           <label for="">Staff Name</label>
@@ -45,25 +46,32 @@
             id="confirmPassword"
             class="w3-input w3-border w3-round"
           /><br />
-          <button
-            type="button"
-            onclick="addStaff()"
-            class="w3-button w3-border w3-round"
-          >
-            Add
-          </button>
+          <div class="w3-center">
+            <button
+              style="
+                background-image: linear-gradient(90deg, #4192f3, #5232f3);
+                color: white;
+              "
+              type="button"
+              onclick="addStaff()"
+              class="w3-button w3-border w3-round"
+            >
+              Add</button
+            ><br />
+          </div>
         </form>
+        <br />
       </div>
     </div>
     <div class="w3-bar top-bar">
       <a href="#" class="w3-bar-item">Equipment tracker</a>
       <div class="w3-right">
-        <div
+        <!-- <div
           class="w3-badge w3-hide-small w3-grey user-icon w3-bar-item"
           style="margin-top: 8px"
         >
           FA
-        </div>
+        </div> -->
         <div
           class="w3-bar-item w3-hide-small user-text"
           style="margin-top: 8px"
@@ -80,18 +88,23 @@
       </div>
     </div>
     <div class="w3-sidebar side-bar" id="mobileNav">
+      <br /><br />
+      <br />
       <br />
       <a href="./index.html" class="w3-bar-item">Dashboard</a>
       <a href="./items.html" class="w3-bar-item">Items</a>
-      <a href="./messages.html" class="w3-bar-item"
+      <!-- <a href="./messages.html" class="w3-bar-item"
         >Messages
         <div class="w3-tag w3-round-xlarge w3-blue">2</div></a
-      >
-      <a href="./staff.html" class="w3-bar-item">Staff</a>
-      <a href="./reports.html" class="w3-bar-item">Reports</a>
+      > -->
+      <a href="./staff.html" class="w3-bar-item staff-nav">Staff</a>
+      <a href="./reports.html" class="w3-bar-item staff-nav">Reports</a>
+      <a onclick="logout()" class="w3-bar-item">Log Out</a>
     </div>
 
     <div id="main">
+      <br /><br />
+      <br />
       <br />
       <div class="w3-auto">
         <div class="w3-padding">

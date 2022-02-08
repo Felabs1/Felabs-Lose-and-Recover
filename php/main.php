@@ -30,8 +30,6 @@ if(isset($_POST['registerdata'])) {
     }else{
         echo "admission_exist";
 
-
-
     }
 }
 
@@ -43,6 +41,7 @@ if(isset($_POST['logindata'])){
             if(password_verify($obj->password, $row['password'])){
                 setcookie("username", $row['admission_no']);
                 setcookie("student_name", $row['student_name']);
+                setcookie("usertype", "student");
                 echo "LOGIN_SUCCESS";
                 echo $_COOKIE['username'];
                 // setcookie("username", $row['admission_no']);

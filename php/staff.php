@@ -26,7 +26,25 @@ if(isset($_GET['staffdata'])){
     echo json_encode($myrow);
 }
 
-
+if(isset($_POST['loginadmin'])){
+    $obj = json_decode($_POST['loginadmin']);
+    // print_r($obj);
+    $fetch = $crud->fetch_data("SELECT * FROM staff WHERE username = '".$obj->username."'");
+    if(count($fetch) == 1){
+        foreach ($fetch as $row) {
+            if(password_verify($obj->password, $row['password'])){
+                setcookie("username", $row['username']);
+                setcookie("student_name", $row['staff_name']);
+                setcookie("usertype", "admin");
+                echo "LOGIN_SUCCESS";
+            }else{
+                echo "WRONG_PASS";
+            }
+        }
+    }else{
+        echo "INVALID_USERNAME";
+    }
+}
 
 
 ?>

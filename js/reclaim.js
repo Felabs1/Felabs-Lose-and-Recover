@@ -43,10 +43,52 @@ $.get("./php/items.php?allRecoveredItems", function (data) {
       //   console.log(result[one].image.slice(1));
     }
   }
+
+  // txt +=
+  //   "<h4>Requests</h4>\
+  // <table class='w3-table'>\
+  // <thead>\
+  // <tr>\
+  // <th>id</th>\
+  // <th>Name</th>\
+  // <th>Admission</th>\
+  // <th>Action</th>\
+  // </tr>\
+  // <thead>\
+  // <tbody>";
+
+  // $.get("./php/items.php?allRecoveryRequests=?", function (data) {
+  //   console.log(data);
+
+  //   for (i = 0; i < data.length; i++) {
+  //     console.log(data[i]);
+  //     txt += `<tr>
+  //     <td>Hello</td>
+  //     <td>Hello</td>
+  //     <td>Hello</td>
+  //     <td>Hello</td>
+  //     </tr>`;
+  //   }
+
+  //   txt += `</tbody></table>`;
+
+  //   // console.log(txt);
+  //   // txt += `<h4>hhooo</h4>`;
+  //   //       txt += `<tr>
+  //   //         <td>${item.id}</td>
+  //   //         <td>${item.claimnant_name}</td>
+  //   //         <td>${item.claimnant_admission}</td>
+  //   //         <td><button class="w3-button w3-border w3-round">confirm</button></td>
+  //   //         </tr>
+  //   // `;
+  // });
   //   let txt = "";
-  console.log(result);
+  //   console.log(result);
   $("#recoveryDetails").html(txt);
 });
+
+document.getElementById("property_id").value = c;
+document.getElementById("property_id").readOnly = true;
 
 // $.get("./php/main.php?cookies=true", (data) => {
 //   // console.log(data.hasOwnProperty("student_name"));

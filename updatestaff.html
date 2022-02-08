@@ -9,10 +9,6 @@
 
     <link rel="stylesheet" href="css/w3/w3.css" />
     <link rel="stylesheet" href="css/style.css" />
-    <style>
-      @media (max-width: 600px) {
-      }
-    </style>
   </head>
   <body>
     <div class="w3-bar top-bar">
@@ -61,78 +57,40 @@
       <div class="w3-auto">
         <div class="w3-padding">
           <div class="w3-bar w3-padding-large w3-light-grey">
-            | Request Item Recovery
+            <h4>Update Staff</h4>
           </div>
         </div>
         <br />
-        <div class="w3-row-padding">
-          <div class="w3-col l6" id="recoveryDetails">
-            <div
-              class="background-image"
-              style="
-                height: 350px;
-                background-image: url('./images/assets/watch.jpg');
-                background-size: cover;
-                background-position: center;
-              "
-            >
-              <div
-                style="background-color: rgba(0, 0, 0, 0.4); height: 100%"
-              ></div>
+        <div class="w3-auto">
+          <div class="w3-row-padding">
+            <div class="w3-col l4">
+              <label for="">Name</label>
+              <input
+                type="text"
+                id="name"
+                class="w3-input w3-border w3-round"
+              />
             </div>
-            <h4>Wrist Watch</h4>
-          </div>
-          <div class="w3-col l6">
-            <h4>Fill The Details Below</h4>
-            <form action="">
-              <label for="">Claimnant Name</label>
-              <input
-                placeholder="enter your name"
-                type="text"
-                id="claimnantName"
-                class="w3-input w3-border w3-round"
-              />
-              <br />
-              <label for="">Claimnant Id No</label>
+            <div class="w3-col l4">
+              <label for="">username</label>
               <input
                 type="text"
-                id="claimnantIdNo"
-                placeholder="enter your id number"
+                id="username"
                 class="w3-input w3-border w3-round"
               />
+            </div>
+            <div class="w3-col-l4">
               <br />
-              <label for="">Admission Number</label>
-              <input
-                type="text"
-                id="admissionNumber"
-                placeholder="enter your admission"
-                class="w3-input w3-border w3-round"
-              />
-              <br />
-              <label for="">Phone</label>
-              <input
-                type="text"
-                id="phoneNumber"
-                placeholder="eg 0787654321"
-                class="w3-input w3-border w3-round"
-              />
-              <br />
-              <div class="w3-center">
-                <button
-                  type="button"
-                  onclick="sendRequest()"
-                  class="w3-button w3-border w3-round"
-                >
-                  Send Request
-                </button>
-              </div>
-            </form>
+              <button class="w3-button w3-border w3-round">
+                Reset password
+              </button>
+            </div>
           </div>
         </div>
       </div>
     </div>
     <script src="./js/jquery/jquery.min.js"></script>
-    <script src="./js/recovery.js"></script>
+    <script src="./js/updateStaff.js"></script>
     <script src="./js/script.js"></script>
   </body>
 </html>
